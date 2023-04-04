@@ -18,9 +18,9 @@ options.add_experimental_option("prefs", prefs)
 user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.517 Safari/537.36'
 options.add_argument('user-agent={0}'.format(user_agent))
 
-links = []
 with open(f"data/subCatLinks.csv","r") as f:
     for l in f.readlines():
+        links = []
         category,sub_category,link = l.split(",")
         root_path = "data_new"
         # category = "Skin Care"
