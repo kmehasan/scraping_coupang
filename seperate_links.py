@@ -1,14 +1,18 @@
 from model.product import Product
-import utils
+import utills.utils as utils
 import json
 
-with open('data/productDetails.json', 'r', encoding='utf-8') as f:
+with open('data/productDetailsEdit.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
     products = []
+    skus = []
     for i in data:
         product = Product(i['name'], i['nameKo'], i['price_after_dc'], i['price_before_dc'], i['category'], i['category2'], i['brand'], i['brandKo'], i['thumbs'], i['main_img'], i['capacity'], i['capacity2'], i['desc'], i['CoupangProductNumber'], i['KeySpecifications'], i['textBetween'], i['link'])
         main_images = i['main_img']
         thumbs = i['thumbs']
+        if i['sku'] in skus:
+            print("Duplicate sku")
+            continue
         with open('data/images.json', 'a+', encoding='utf-8') as f:
             n = 1
             new_main_images = []

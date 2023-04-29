@@ -1,10 +1,10 @@
 import json
-import utils
+import utills.utils as utils
 from googletrans import Translator
 # pip3 install googletrans==3.1.0a0
 class Product():
     translator = Translator()
-    def __init__(self, name,nameKo, price_before_dc,price_after_dc, category,category2,brand,brandKo,thumbs,main_img,capacity,capacity2,desc,CoupangProductNumber,KeySpecifications,textBetween,link):
+    def __init__(self, name,nameKo, price_before_dc,price_after_dc, category,category2,brand,brandKo,thumbs,main_img,capacity,capacity2,desc,CoupangProductNumber,KeySpecifications,textBetween,link,full_desc=None):
         self.name = name
         self.nameKo = nameKo
         self.price_after_dc = price_after_dc
@@ -22,6 +22,7 @@ class Product():
         self.KeySpecifications = KeySpecifications
         self.textBetween = textBetween
         self.link = link
+        self.full_desc_html = full_desc
         numbers = self.CoupangProductNumber.split(" - ")
         self.sku = "SKU_"+utils.base36encode(int(numbers[0])) + "_" + utils.base36encode(int(numbers[1]))
     def translate(self):
